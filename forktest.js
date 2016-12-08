@@ -50,5 +50,8 @@ if (cluster.isMaster) {
     const interval = setInterval(() => null, 1000000);
     // Forward SIGHUP to parent
     process.on('SIGHUP', () => process.send('SIGHUP'));
-    process.on('disconnect', () => clearInterval(interval));
+    process.on('disconnect', () => {
+        clearInterval(interval);
+        process.exit(0);
+    });
 }
