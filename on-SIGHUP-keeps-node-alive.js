@@ -1,7 +1,8 @@
-const timer = setTimer(() => null, 1000);
+const timer = setInterval(() => null, 1000);
 process.on('SIGHUP', () => {
     console.log('SIGHUP');
-    clearTimer(timer);
+    clearInterval(timer);
+    process.exit(0);
 });
 process.on('exit', () => {
     console.log('exiting');
